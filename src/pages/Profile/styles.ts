@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import restaurantImg from '../../assets/restaurant-1.png'
-
 export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
@@ -17,8 +15,12 @@ export const HeaderContainer = styled.header`
 
 export const RestaurantContainer = styled.div``
 
-export const RestaurantHeader = styled.div`
-  background-image: url(${restaurantImg});
+interface RestaurantHeaderProps {
+  $imageUrl: string
+}
+
+export const RestaurantHeader = styled.div<RestaurantHeaderProps>`
+  background-image: url(${(props) => props.$imageUrl});
   background-repeat: no-repeat;
   background-size: 100%;
 
@@ -34,6 +36,10 @@ export const RestaurantHeader = styled.div`
 
   span {
     font-weight: 200;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   h2 {

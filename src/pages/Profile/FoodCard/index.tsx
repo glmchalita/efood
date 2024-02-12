@@ -1,22 +1,18 @@
-import food from '../../../assets/food-1.png'
+import { ItemInput } from '../../Home'
 import { FoodContainer, FoodContent } from './styles'
 
-export function FoodCard() {
+export function FoodCard({ item }: { item: ItemInput }) {
   return (
     <FoodContainer>
       <FoodContent>
-        <img src={food} alt="" />
+        <img src={item.foto} alt="" />
 
         <div>
-          <h3>Pizza Marguerita</h3>
+          <h3>{item.nome}</h3>
 
-          <p>
-            A clássica Marguerita: molho de tomate suculento, mussarela
-            derretida, manjericão fresco e um toque de azeite. Sabor e
-            simplicidade!
-          </p>
+          <p>{item.descricao}</p>
 
-          <button>Adicionar ao carrinho</button>
+          <button type="button">Adicionar ao carrinho</button>
         </div>
       </FoodContent>
     </FoodContainer>

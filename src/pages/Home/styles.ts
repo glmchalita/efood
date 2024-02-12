@@ -16,7 +16,7 @@ export const HeaderContent = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  gap: 138px;
+  gap: 80px;
   text-align: center;
 
   h2 {
@@ -27,9 +27,14 @@ export const HeaderContent = styled.div`
 `
 
 export const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+export const MainContent = styled.div`
   padding: 80px 170px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 450px);
   row-gap: 48px;
   column-gap: 30px;
 `

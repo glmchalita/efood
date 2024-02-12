@@ -2,14 +2,16 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const RestaurantCardContainer = styled.div`
-  max-width: 400px;
   width: 100%;
 
   color: ${({ theme }) => theme.color.red};
   position: relative;
+
   > img {
     display: block;
     width: 100%;
+    height: 220px;
+    object-fit: cover;
   }
 
   > div:first-of-type {
@@ -27,6 +29,10 @@ export const RestaurantCardContainer = styled.div`
     span {
       padding: 6px 4px;
       background-color: ${({ theme }) => theme.color.red};
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
     }
   }
 `

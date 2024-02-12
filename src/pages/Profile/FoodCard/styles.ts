@@ -10,6 +10,8 @@ export const FoodContent = styled.div`
     display: block;
     width: 100%;
     margin-bottom: 8px;
+    height: 200px;
+    object-fit: cover;
   }
 
   div {
@@ -26,12 +28,14 @@ export const FoodContent = styled.div`
     p {
       font-size: 14px;
     }
+
     button {
       background-color: ${({ theme }) => theme.color.bege};
       color: ${({ theme }) => theme.color.red};
       font-size: 14px;
       font-weight: 700;
       padding: 4px;
+      cursor: pointer;
     }
   }
 `
