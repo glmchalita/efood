@@ -1,38 +1,42 @@
 import { Star } from 'lucide-react'
 import { useTheme } from 'styled-components'
 
-import restaurantImg1 from '../../../assets/restaurant-1.png'
+import { RestaurantInput } from '..'
 import { CardContent, NavLink, RestaurantCardContainer } from './styles'
 
-export function RestaurantCard() {
+export function RestaurantCard({
+  restaurant,
+}: {
+  restaurant: RestaurantInput
+}) {
   const theme = useTheme()
-  console.log(restaurantImg1)
+
+  const restaurantQuery = restaurant.titulo.split(' ').join('-').toLowerCase()
+  // props.data.name.split(` `).join(`-`).toLowerCase()
 
   return (
     <RestaurantCardContainer>
-      <img src={restaurantImg1} alt="" />
+      <img src={restaurant.capa} alt="" />
 
       <div>
-        <span>Japonesa</span>
+        {restaurant.destacado ? <span>Destacado</span> : null}
+        <span>{restaurant.tipo}</span>
       </div>
 
       <CardContent>
         <div>
-          <h3>Hioki Sushi</h3>
+          <h3>{restaurant.titulo}</h3>
           <span>
-            4.9
+            {restaurant.avaliacao}
             <Star fill={theme.color.yellow} color={theme.color.yellow} />
           </span>
         </div>
 
-        <p>
-          Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis
-          frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega
-          rápida, embalagens cuidadosas e qualidade garantida. Experimente o
-          Japão sem sair do lar com nosso delivery!
-        </p>
+        <p>{restaurant.descricao}</p>
 
-        <NavLink to="/profile">Saiba mais</NavLink>
+        <NavLink to={`/restaurant/${restaurantQuery}`} state={{ restaurant }}>
+          Saiba mais
+        </NavLink>
       </CardContent>
     </RestaurantCardContainer>
   )
