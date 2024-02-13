@@ -12,7 +12,6 @@ export function RestaurantCard({
   const theme = useTheme()
 
   const restaurantQuery = restaurant.titulo.split(' ').join('-').toLowerCase()
-  // props.data.name.split(` `).join(`-`).toLowerCase()
 
   return (
     <RestaurantCardContainer>
