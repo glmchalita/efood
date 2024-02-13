@@ -15,6 +15,7 @@ export interface ItemInput {
   id: number
   nome: string
   descricao: string
+  porcao: string
 }
 
 export interface RestaurantInput {
