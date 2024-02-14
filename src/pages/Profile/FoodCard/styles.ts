@@ -35,7 +35,7 @@ export const FoodContent = styled.div`
 
     p {
       font-size: 14px;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
   }
 `

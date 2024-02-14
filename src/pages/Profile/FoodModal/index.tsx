@@ -1,11 +1,25 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
+import { useDispatch } from 'react-redux'
 
 import { Button } from '../../../components/Button'
+import { addItem } from '../../../store/sliceCart'
 import { ItemInput } from '../../Home'
 import { Close, Content, Overlay } from './styles'
 
 export function FoodModal({ item }: { item: ItemInput }) {
+  const dispatch = useDispatch()
+
+  function handleAddToCart() {
+    const newItem = {
+      image: item.foto,
+      title: item.nome,
+      price: item.preco,
+    }
+
+    dispatch(addItem(newItem))
+  }
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -28,7 +42,7 @@ export function FoodModal({ item }: { item: ItemInput }) {
 
             <span>Serve: de {item.porcao}</span>
 
-            <Button>
+            <Button onClick={handleAddToCart}>
               Adicionar ao carrinho -{' '}
               <span>
                 {item.preco.toLocaleString('pt-br', {

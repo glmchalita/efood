@@ -11,34 +11,16 @@ export const Overlay = styled(Dialog.Overlay)`
 
 export const Content = styled(Dialog.Content)`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  right: 0;
+  height: 100vh;
 
-  min-width: 32rem;
-  border-radius: 6px;
+  min-width: 24rem;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
   padding: 32px;
   background-color: ${({ theme }) => theme.color.red};
   color: ${({ theme }) => theme.color.bege};
-
-  display: flex;
-  gap: 24px;
-
-  img {
-    width: 280px;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 6px;
-  }
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-
-    font-size: 14px;
-  }
 `
 
 export const Close = styled(Dialog.Close)`
@@ -46,15 +28,31 @@ export const Close = styled(Dialog.Close)`
   background-color: transparent;
   border: 0;
 
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 0.5rem;
+  right: 0.5rem;
 
   cursor: pointer;
 
   color: ${({ theme }) => theme.color.bege};
 `
 
-export const Title = styled(Dialog.Title)`
-  font-size: 18px;
-  font-weight: 700;
+export const ItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`
+
+export const ControlsContainer = styled.div`
+  margin-top: 40px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  button {
+    width: 100%;
+  }
 `
