@@ -31,7 +31,6 @@ export interface RestaurantInput {
 
 export function Home() {
   const [restaurants, setRestaurants] = useState<RestaurantInput[]>([])
-  console.log(restaurants)
 
   useEffect(() => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes').then(

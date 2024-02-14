@@ -1,7 +1,11 @@
+import * as Dialog from '@radix-ui/react-dialog'
 import { Link, useLocation } from 'react-router-dom'
 
 import logo from '../../assets/logo.svg'
+import { Button } from '../../components/Button'
+import { useCart } from '../../store/useCart'
 import { RestaurantInput } from '../Home'
+import { Checkout } from './Checkout'
 import { FoodCard } from './FoodCard'
 import {
   HeaderContainer,
@@ -13,6 +17,7 @@ import {
 export function Profile() {
   const { state } = useLocation()
   const restaurant = state.restaurant as RestaurantInput
+  const cart = useCart()
 
   return (
     <>
@@ -21,7 +26,13 @@ export function Profile() {
 
         <img src={logo} alt="" />
 
-        <a href="#">0 produto(s) no carrinho</a>
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <Button>{cart.length} produto(s) no carrinho</Button>
+          </Dialog.Trigger>
+
+          <Checkout />
+        </Dialog.Root>
       </HeaderContainer>
 
       <RestaurantContainer>
