@@ -1,9 +1,16 @@
 import { Trash2 } from 'lucide-react'
+import { useDispatch } from 'react-redux'
 
-import { Cart } from '../../../store/sliceCart'
+import { Cart, removeItem } from '../../../../store/sliceCart'
 import { ItemContent } from './styles'
 
 export function CheckoutItem({ item }: { item: Cart }) {
+  const dispatch = useDispatch()
+
+  function handleDeleteItem() {
+    dispatch(removeItem(item))
+  }
+
   return (
     <ItemContent>
       <img src={item.image} alt="" />
@@ -18,7 +25,7 @@ export function CheckoutItem({ item }: { item: Cart }) {
         </span>
       </div>
 
-      <button>
+      <button onClick={handleDeleteItem}>
         <Trash2 size={20} />
       </button>
     </ItemContent>

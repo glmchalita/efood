@@ -1,53 +1,29 @@
-import * as Dialog from '@radix-ui/react-dialog'
-import { X } from 'lucide-react'
+import { useState } from 'react'
 
-import { Button } from '../../../components/Button'
-import { useCart } from '../../../store/useCart'
-import { CheckoutItem } from '../CheckoutItem'
-import {
-  Close,
-  Content,
-  ControlsContainer,
-  ItemContainer,
-  Overlay,
-} from './styles'
+import { Cart } from './pages/Cart'
+import { Confirmation } from './pages/Confirmation'
+import { Delivery } from './pages/Delivery'
+import { Payment } from './pages/Payment'
 
 export function Checkout() {
-  const cart = useCart()
+  const [checkoutPage, setCheckoutPage] = useState<
+    'delivery' | 'payment' | 'confirmation' | ''
+  >('')
 
-  const totalPrice = cart.reduce((total, currentItem) => {
-    return (total += currentItem.price)
-  }, 0)
+  function handleNextPage(page: 'delivery' | 'payment' | 'confirmation') {
+    setCheckoutPage(page)
+  }
 
-  return (
-    <Dialog.Portal>
-      <Overlay />
-      <Content>
-        <Close>
-          <X size={24} />
-        </Close>
+  switch (checkoutPage) {
+    case 'delivery':
+      return <Delivery handleNextPage={handleNextPage} />
 
-        <div>
-          <ItemContainer>
-            {cart.map((item, index) => {
-              return <CheckoutItem key={index} item={item} />
-            })}
-          </ItemContainer>
+    case 'payment':
+      return <Payment handleNextPage={handleNextPage} />
 
-          <ControlsContainer>
-            <div>
-              <span>Valor total</span>
-              <span>
-                {totalPrice.toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}
-              </span>
-            </div>
-            <Button>Continuar com a entrega</Button>
-          </ControlsContainer>
-        </div>
-      </Content>
-    </Dialog.Portal>
-  )
+    case 'confirmation':
+      return <Confirmation />
+    default:
+      return <Cart handleNextPage={handleNextPage} />
+  }
 }

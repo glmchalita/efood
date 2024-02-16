@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
-
 import logo from '../../assets/logo.svg'
-import { RestaurantCard } from './RestaurantCard'
+import { useGetCartQuery } from '../../services/api'
+import { RestaurantCard } from './components/RestaurantCard'
 import {
   HeaderContainer,
   HeaderContent,
@@ -30,33 +29,37 @@ export interface RestaurantInput {
 }
 
 export function Home() {
-  const [restaurants, setRestaurants] = useState<RestaurantInput[]>([])
-
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes').then(
-      (res) => res.json().then((res) => setRestaurants(res)),
-    )
-  }, [])
+  const { data: restaurants, isLoading } = useGetCartQuery()
 
   return (
     <>
-      <HeaderContainer>
-        <HeaderContent>
-          <img src={logo} alt="" />
+      {isLoading ? (
+        <div>Carregando...</div>
+      ) : (
+        <>
+          <HeaderContainer>
+            <HeaderContent>
+              <img src={logo} alt="" />
 
-          <h2>Viva experiências gastronômicas no conforto da sua casa</h2>
-        </HeaderContent>
-      </HeaderContainer>
+              <h2>Viva experiências gastronômicas no conforto da sua casa</h2>
+            </HeaderContent>
+          </HeaderContainer>
 
-      <MainContainer>
-        <MainContent>
-          {restaurants.map((restaurant) => {
-            return (
-              <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-            )
-          })}
-        </MainContent>
-      </MainContainer>
+          <MainContainer>
+            <MainContent>
+              {restaurants &&
+                restaurants.map((restaurant) => {
+                  return (
+                    <RestaurantCard
+                      key={restaurant.id}
+                      restaurant={restaurant}
+                    />
+                  )
+                })}
+            </MainContent>
+          </MainContainer>
+        </>
+      )}
     </>
   )
 }
