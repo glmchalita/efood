@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { store } from '.'
 
 export interface Cart {
+  id: string
   image: string
   title: string
   price: number
@@ -15,13 +16,21 @@ const sliceCart = createSlice({
   initialState,
   reducers: {
     addItem(state, { payload }: PayloadAction<Cart>) {
-      const newContact = {
+      const newItem = {
+        id: crypto.randomUUID(),
         image: payload.image,
         title: payload.title,
         price: payload.price,
       }
 
-      return [...state, newContact]
+      return [...state, newItem]
+    },
+    removeItem(state, { payload }: PayloadAction<Cart>) {
+      const cartWithoutDeletedOne = state.filter(
+        (item) => item.id !== payload.id,
+      )
+
+      return [...cartWithoutDeletedOne]
     },
     // editContact(state, { payload }: PayloadAction<Contact>) {
     //   return state.map((contact) => {
@@ -37,16 +46,9 @@ const sliceCart = createSlice({
     //     }
     //   })
     // },
-    // removeContact(state, { payload }: PayloadAction<Contact>) {
-    //   const contactsWithoutDeletedOne = state.filter(
-    //     (contact) => contact.id !== payload.id,
-    //   )
-
-    //   return [...contactsWithoutDeletedOne]
-    // },
   },
 })
 
 export default sliceCart.reducer
-export const { addItem } = sliceCart.actions
+export const { addItem, removeItem } = sliceCart.actions
 export type stateType = ReturnType<typeof store.getState>

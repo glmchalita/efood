@@ -1,4 +1,4 @@
-import { ItemInput } from '../../Home'
+import { ItemInput } from '../../../Home'
 import { FoodModal } from '../FoodModal'
 import { FoodContainer, FoodContent } from './styles'
 

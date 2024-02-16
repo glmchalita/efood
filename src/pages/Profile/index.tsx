@@ -6,7 +6,7 @@ import { Button } from '../../components/Button'
 import { useCart } from '../../store/useCart'
 import { RestaurantInput } from '../Home'
 import { Checkout } from './Checkout'
-import { FoodCard } from './FoodCard'
+import { FoodCard } from './components/FoodCard'
 import {
   HeaderContainer,
   RestaurantContainer,

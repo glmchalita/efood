@@ -1,6 +1,6 @@
 import { Trash2 } from 'lucide-react'
 
-import { Cart } from '../../../store/sliceCart'
+import { Cart } from '../../../../store/sliceCart'
 import { ItemContent } from './styles'
 
 export function CheckoutItem({ item }: { item: Cart }) {

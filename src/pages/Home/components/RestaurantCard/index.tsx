@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react'
 import { useTheme } from 'styled-components'
 
-import { RestaurantInput } from '..'
+import { RestaurantInput } from '../..'
 import { CardContent, NavLink, RestaurantCardContainer } from './styles'
 
 export function RestaurantCard({

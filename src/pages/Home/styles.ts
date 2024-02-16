@@ -7,10 +7,12 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
 `
+
 export const HeaderContent = styled.div`
   width: 100%;
-  max-width: 540px;
+  max-width: 1120px;
   padding: 64px 0;
+  margin: 0 auto;
 
   display: flex;
   align-items: center;
@@ -29,6 +31,11 @@ export const HeaderContent = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
+
+  width: 100%;
+  max-width: 1120px;
+  padding: 64px 0;
+  margin: 0 auto;
 `
 
 export const MainContent = styled.div`
