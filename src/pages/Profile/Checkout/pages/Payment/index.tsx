@@ -3,5 +3,11 @@ interface PaymentProps {
 }
 
 export function Payment({ handleNextPage }: PaymentProps) {
-  return <div></div>
+  return (
+    <div>
+      <button onClick={() => handleNextPage('confirmation')}>
+        Confirmation
+      </button>
+    </div>
+  )
 }

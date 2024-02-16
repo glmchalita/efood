@@ -3,5 +3,9 @@ interface DeliveryProps {
 }
 
 export function Delivery({ handleNextPage }: DeliveryProps) {
-  return <div></div>
+  return (
+    <div>
+      <button onClick={() => handleNextPage('payment')}>Payment</button>
+    </div>
+  )
 }

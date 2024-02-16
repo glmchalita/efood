@@ -12,11 +12,11 @@ export function FoodModal({ item }: { item: ItemInput }) {
 
   function handleAddToCart() {
     const newItem = {
+      id: crypto.randomUUID(),
       image: item.foto,
       title: item.nome,
       price: item.preco,
     }
-
     dispatch(addItem(newItem))
   }
 

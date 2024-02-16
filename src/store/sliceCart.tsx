@@ -17,7 +17,7 @@ const sliceCart = createSlice({
   reducers: {
     addItem(state, { payload }: PayloadAction<Cart>) {
       const newItem = {
-        id: crypto.randomUUID(),
+        id: payload.id,
         image: payload.image,
         title: payload.title,
         price: payload.price,
