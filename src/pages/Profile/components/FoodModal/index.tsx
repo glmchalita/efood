@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 
 import { Button } from '../../../../components/Button'
 import { addItem, ItemInput } from '../../../../store/sliceCart'
+import { Checkout } from '../../Checkout'
 import { Close, Content, Overlay, Title } from './styles'
 
 export function FoodModal({ item }: { item: ItemInput }) {
@@ -41,15 +42,21 @@ export function FoodModal({ item }: { item: ItemInput }) {
 
             <span>Serve: de {item.porcao}</span>
 
-            <Button onClick={handleAddToCart}>
-              Adicionar ao carrinho -{' '}
-              <span>
-                {item.preco.toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}
-              </span>
-            </Button>
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <Button onClick={handleAddToCart}>
+                  Adicionar ao carrinho -{' '}
+                  <span>
+                    {item.preco.toLocaleString('pt-br', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    })}
+                  </span>
+                </Button>
+              </Dialog.Trigger>
+
+              <Checkout />
+            </Dialog.Root>
           </div>
         </Content>
       </Dialog.Portal>

@@ -50,6 +50,8 @@ export const ControlsContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 700;
   }
 
   button {

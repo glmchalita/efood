@@ -5,7 +5,7 @@ export const ItemContent = styled.div`
   gap: 8px;
   background-color: ${({ theme }) => theme.color.bege};
   color: ${({ theme }) => theme.color.red};
-  padding: 12px;
+  padding: 8px 8px 12px;
   border-radius: 6px;
   position: relative;
 

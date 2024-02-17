@@ -31,28 +31,26 @@ export function Cart({ handleNextPage }: CartProps) {
           <X size={24} />
         </Close>
 
-        <div>
-          <ItemContainer>
-            {cart.map((item) => {
-              return <CheckoutItem key={item.id} item={item} />
-            })}
-          </ItemContainer>
+        <ItemContainer>
+          {cart.map((item) => {
+            return <CheckoutItem key={item.id} item={item} />
+          })}
+        </ItemContainer>
 
-          <ControlsContainer>
-            <div>
-              <span>Valor total</span>
-              <span>
-                {totalPrice.toLocaleString('pt-br', {
-                  style: 'currency',
-                  currency: 'BRL',
-                })}
-              </span>
-            </div>
-            <Button onClick={() => handleNextPage('delivery')}>
-              Continuar com a entrega
-            </Button>
-          </ControlsContainer>
-        </div>
+        <ControlsContainer>
+          <div>
+            <span>Valor total</span>
+            <span>
+              {totalPrice.toLocaleString('pt-br', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+            </span>
+          </div>
+          <Button onClick={() => handleNextPage('delivery')}>
+            Continuar com a entrega
+          </Button>
+        </ControlsContainer>
       </Content>
     </Dialog.Portal>
   )

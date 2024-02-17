@@ -10,7 +10,7 @@ export function Checkout() {
     'delivery' | 'payment' | 'confirmation' | ''
   >('')
 
-  function handleNextPage(page: 'delivery' | 'payment' | 'confirmation') {
+  function handleNextPage(page: 'delivery' | 'payment' | 'confirmation' | '') {
     setCheckoutPage(page)
   }
 
