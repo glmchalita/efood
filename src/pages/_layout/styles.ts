@@ -5,26 +5,35 @@ export const Footer = styled.footer`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 80px;
   padding: 40px 0;
 
   background-color: ${({ theme }) => theme.color.bege};
 
-  div {
-    line-height: 0;
+  > div {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
 
-    svg {
-      background-color: ${({ theme }) => theme.color.red};
-      border-radius: 50%;
-      padding: 4px;
+    div {
       line-height: 0;
-      color: ${({ theme }) => theme.color.white};
+      display: flex;
+      gap: 8px;
+
+      svg {
+        background-color: ${({ theme }) => theme.color.red};
+        border-radius: 50%;
+        padding: 4px;
+        line-height: 0;
+        color: ${({ theme }) => theme.color.white};
+      }
     }
   }
 
   p {
+    width: 480px;
+    text-align: center;
     font-size: 10px;
     color: ${({ theme }) => theme.color.red};
   }

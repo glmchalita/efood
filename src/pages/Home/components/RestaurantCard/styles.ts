@@ -47,29 +47,39 @@ export const CardContent = styled.div`
   border: 2px solid ${({ theme }) => theme.color.red};
   border-top: 0;
 
-  > div:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    span {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 18px;
-      font-weight: 700;
+  > div {
+    p {
+      font-size: 14px;
     }
-  }
-
-  p {
-    font-size: 14px;
   }
 `
 
+export const Title = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    font-size: 18px;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+`
 export const NavLink = styled(Link)`
   background-color: ${({ theme }) => theme.color.red};
   color: ${({ theme }) => theme.color.bege};
   padding: 4px 6px;
 
   width: fit-content;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  margin-top: auto;
 `

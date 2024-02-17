@@ -10,12 +10,14 @@ export function Layout() {
       <Outlet />
 
       <Footer>
-        <img src={logo} alt="" />
-
         <div>
-          <Instagram size={24} strokeWidth={1.5} />
-          <Facebook size={24} strokeWidth={1.5} />
-          <Twitter size={24} strokeWidth={1.5} />
+          <img src={logo} alt="" />
+
+          <div>
+            <Instagram size={24} strokeWidth={1.5} />
+            <Facebook size={24} strokeWidth={1.5} />
+            <Twitter size={24} strokeWidth={1.5} />
+          </div>
         </div>
 
         <p>

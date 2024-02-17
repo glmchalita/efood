@@ -1,8 +1,12 @@
-import { ItemInput } from '../../../Home'
+import { ItemInput } from '../../../../store/sliceCart'
 import { FoodModal } from '../FoodModal'
 import { FoodContainer, FoodContent } from './styles'
 
-export function FoodCard({ item }: { item: ItemInput }) {
+interface FoodCardProps {
+  item: ItemInput
+}
+
+export function FoodCard({ item }: FoodCardProps) {
   return (
     <FoodContainer>
       <FoodContent>

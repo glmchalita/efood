@@ -2,6 +2,26 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { store } from '.'
 
+export interface ItemInput {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
+}
+
+export interface RestaurantInput {
+  id: number
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
+  cardapio: ItemInput[]
+}
+
 export interface Cart {
   id: string
   image: string
@@ -32,20 +52,6 @@ const sliceCart = createSlice({
 
       return [...cartWithoutDeletedOne]
     },
-    // editContact(state, { payload }: PayloadAction<Contact>) {
-    //   return state.map((contact) => {
-    //     if (contact.id === payload.id) {
-    //       return {
-    //         id: contact.id,
-    //         name: payload.name,
-    //         email: payload.email,
-    //         cel: payload.cel,
-    //       }
-    //     } else {
-    //       return { ...contact }
-    //     }
-    //   })
-    // },
   },
 })
 

@@ -3,15 +3,18 @@ import { Link, useLocation } from 'react-router-dom'
 
 import logo from '../../assets/logo.svg'
 import { Button } from '../../components/Button'
+import { RestaurantInput } from '../../store/sliceCart'
 import { useCart } from '../../store/useCart'
-import { RestaurantInput } from '../Home'
 import { Checkout } from './Checkout'
 import { FoodCard } from './components/FoodCard'
 import {
   HeaderContainer,
+  HeaderContent,
+  MenuContainer,
   RestaurantContainer,
   RestaurantContent,
   RestaurantHeader,
+  RestaurantHeaderContent,
 } from './styles'
 
 export function Profile() {
@@ -22,30 +25,36 @@ export function Profile() {
   return (
     <>
       <HeaderContainer>
-        <Link to="/">Restaurantes</Link>
+        <HeaderContent>
+          <Link to="/">Restaurantes</Link>
 
-        <img src={logo} alt="" />
+          <img src={logo} alt="" />
 
-        <Dialog.Root>
-          <Dialog.Trigger asChild>
-            <Button>{cart.length} produto(s) no carrinho</Button>
-          </Dialog.Trigger>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <Button>{cart.length} produto(s) no carrinho</Button>
+            </Dialog.Trigger>
 
-          <Checkout />
-        </Dialog.Root>
+            <Checkout />
+          </Dialog.Root>
+        </HeaderContent>
       </HeaderContainer>
 
       <RestaurantContainer>
         <RestaurantHeader $imageUrl={restaurant.capa}>
-          <span>{restaurant.tipo}</span>
-          <h2>{restaurant.titulo}</h2>
+          <RestaurantHeaderContent>
+            <span>{restaurant.tipo}</span>
+            <h2>{restaurant.titulo}</h2>
+          </RestaurantHeaderContent>
         </RestaurantHeader>
 
-        <RestaurantContent>
-          {restaurant.cardapio.map((item) => {
-            return <FoodCard key={item.id} item={item} />
-          })}
-        </RestaurantContent>
+        <MenuContainer>
+          <RestaurantContent>
+            {restaurant.cardapio.map((item) => {
+              return <FoodCard key={item.id} item={item} />
+            })}
+          </RestaurantContent>
+        </MenuContainer>
       </RestaurantContainer>
     </>
   )
