@@ -30,11 +30,13 @@ export const FoodContent = styled.div`
     color: ${({ theme }) => theme.color.bege};
 
     h3 {
+      font-size: 16px;
       font-weight: 700;
     }
 
     p {
       font-size: 14px;
+      line-height: 1.22;
       margin-bottom: 8px;
     }
   }

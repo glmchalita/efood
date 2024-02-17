@@ -10,15 +10,15 @@ export const HeaderContainer = styled.div`
 
 export const HeaderContent = styled.div`
   width: 100%;
-  max-width: 1120px;
-  padding: 64px 0;
+  max-width: 540px;
+  padding: 64px 0 40px;
   margin: 0 auto;
 
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  gap: 80px;
+  gap: 138px;
   text-align: center;
 
   h2 {
@@ -31,17 +31,15 @@ export const HeaderContent = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-
   width: 100%;
   max-width: 1120px;
-  padding: 64px 0;
+  padding: 80px 0 120px;
   margin: 0 auto;
 `
 
 export const MainContent = styled.div`
-  padding: 80px 170px;
   display: grid;
-  grid-template-columns: repeat(2, 450px);
+  grid-template-columns: repeat(2, 472px);
+  column-gap: 80px;
   row-gap: 48px;
-  column-gap: 30px;
 `

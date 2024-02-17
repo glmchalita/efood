@@ -3,8 +3,7 @@ import { X } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 
 import { Button } from '../../../../components/Button'
-import { addItem } from '../../../../store/sliceCart'
-import { ItemInput } from '../../../Home'
+import { addItem, ItemInput } from '../../../../store/sliceCart'
 import { Close, Content, Overlay, Title } from './styles'
 
 export function FoodModal({ item }: { item: ItemInput }) {

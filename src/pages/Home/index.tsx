@@ -1,5 +1,5 @@
 import logo from '../../assets/logo.svg'
-import { useGetCartQuery } from '../../services/api'
+import { useGetRestaurantsQuery } from '../../services/api'
 import { RestaurantCard } from './components/RestaurantCard'
 import {
   HeaderContainer,
@@ -8,28 +8,8 @@ import {
   MainContent,
 } from './styles'
 
-export interface ItemInput {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
-}
-
-export interface RestaurantInput {
-  id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  capa: string
-  cardapio: ItemInput[]
-}
-
 export function Home() {
-  const { data: restaurants, isLoading } = useGetCartQuery()
+  const { data: restaurants, isLoading } = useGetRestaurantsQuery()
 
   return (
     <>
