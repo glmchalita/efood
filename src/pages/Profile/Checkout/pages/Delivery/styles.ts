@@ -15,12 +15,25 @@ export const Content = styled(Dialog.Content)`
   right: 0;
   height: 100vh;
 
-  min-width: 24rem;
+  max-width: 360px;
+  width: 100%;
   border-top-left-radius: 32px;
   border-bottom-left-radius: 32px;
-  padding: 32px;
+  padding: 32px 8px;
   background-color: ${({ theme }) => theme.color.red};
   color: ${({ theme }) => theme.color.bege};
+
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 `
 
 export const Close = styled(Dialog.Close)`
@@ -36,21 +49,16 @@ export const Close = styled(Dialog.Close)`
   color: ${({ theme }) => theme.color.bege};
 `
 
-export const ItemContainer = styled.div`
+export const HalfInput = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  gap: 34px;
 `
 
 export const ControlsContainer = styled.div`
-  margin-top: 40px;
-
-  > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-  }
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
   button {
     width: 100%;

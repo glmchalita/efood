@@ -15,10 +15,11 @@ export const Content = styled(Dialog.Content)`
   right: 0;
   height: 100vh;
 
-  min-width: 24rem;
+  max-width: 360px;
+  width: 100%;
   border-top-left-radius: 32px;
   border-bottom-left-radius: 32px;
-  padding: 32px;
+  padding: 32px 8px;
   background-color: ${({ theme }) => theme.color.red};
   color: ${({ theme }) => theme.color.bege};
 `

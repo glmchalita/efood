@@ -3,11 +3,14 @@ import { X } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 
 import { Button } from '../../../../components/Button'
-import { addItem, ItemInput } from '../../../../store/sliceCart'
-import { Checkout } from '../../Checkout'
+import { addItem, ItemInput, setOpen } from '../../../../store/sliceCart'
 import { Close, Content, Overlay, Title } from './styles'
 
-export function FoodModal({ item }: { item: ItemInput }) {
+interface FoodModalProps {
+  item: ItemInput
+}
+
+export function FoodModal({ item }: FoodModalProps) {
   const dispatch = useDispatch()
 
   function handleAddToCart() {
@@ -18,6 +21,7 @@ export function FoodModal({ item }: { item: ItemInput }) {
       price: item.preco,
     }
     dispatch(addItem(newItem))
+    dispatch(setOpen(true))
   }
 
   return (
@@ -42,21 +46,15 @@ export function FoodModal({ item }: { item: ItemInput }) {
 
             <span>Serve: de {item.porcao}</span>
 
-            <Dialog.Root>
-              <Dialog.Trigger asChild>
-                <Button onClick={handleAddToCart}>
-                  Adicionar ao carrinho -{' '}
-                  <span>
-                    {item.preco.toLocaleString('pt-br', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })}
-                  </span>
-                </Button>
-              </Dialog.Trigger>
-
-              <Checkout />
-            </Dialog.Root>
+            <Button onClick={handleAddToCart}>
+              Adicionar ao carrinho -{' '}
+              <span>
+                {item.preco.toLocaleString('pt-br', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}
+              </span>
+            </Button>
           </div>
         </Content>
       </Dialog.Portal>
