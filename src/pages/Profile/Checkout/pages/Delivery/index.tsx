@@ -7,7 +7,7 @@ import { AnyZodObject } from 'zod'
 import { Button } from '../../../../../components/Button'
 import { TextInput } from '../../../../../components/TextInput'
 import { setCheckoutPage } from '../../../../../store/sliceCart'
-import { newOrderPaymentSchema } from '../..'
+import { NewOrderFormInput, newOrderFormSchema } from '../..'
 import { Close, Content, ControlsContainer, HalfInput, Overlay } from './styles'
 
 interface DeliveryProps {
@@ -19,14 +19,14 @@ export function Delivery({ handleCurrentSchema }: DeliveryProps) {
     register,
     trigger,
     formState: { errors },
-  } = useFormContext()
+  } = useFormContext<NewOrderFormInput>()
 
   const dispatch = useDispatch()
 
   function handleNextPage() {
     trigger().then((isValid) => {
       if (isValid) {
-        handleCurrentSchema(newOrderPaymentSchema)
+        handleCurrentSchema(newOrderFormSchema)
         dispatch(setCheckoutPage('payment'))
       }
     })

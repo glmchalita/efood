@@ -2,13 +2,12 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { AnyZodObject } from 'zod'
 
 import { Button } from '../../../../../components/Button'
 import { TextInput } from '../../../../../components/TextInput'
 import { setCheckoutPage } from '../../../../../store/sliceCart'
 import { useCart } from '../../../../../store/useCart'
-import { newOrderDeliverySchema } from '../..'
+import { NewOrderFormInput } from '../..'
 import {
   CardDetails,
   CardExpiration,
@@ -19,33 +18,17 @@ import {
   Overlay,
 } from './styles'
 
-interface PaymentProps {
-  handleCurrentSchema: (schema: AnyZodObject) => void
-}
-
-export function Payment({ handleCurrentSchema }: PaymentProps) {
+export function Payment() {
   const { totalPrice } = useCart()
   const {
     register,
-    trigger,
-    handleSubmit,
     formState: { errors },
-  } = useFormContext()
+  } = useFormContext<NewOrderFormInput>()
   const dispatch = useDispatch()
 
   function handlePreviousPage() {
     dispatch(setCheckoutPage('delivery'))
   }
-
-  // function handleOnClick(data: any) {
-  //   trigger().then((isValid) => {
-  //     if (isValid) {
-  //       handleCurrentSchema(newOrderDeliverySchema)
-  //       dispatch(setCheckoutPage('confirmation'))
-  //       console.log(data)
-  //     }
-  //   })
-  // }
 
   return (
     <Dialog.Portal>
@@ -115,11 +98,7 @@ export function Payment({ handleCurrentSchema }: PaymentProps) {
         </Form>
 
         <ControlsContainer>
-          <Button
-            form="newOrder"
-            type="submit"
-            // onClick={handleSubmit(handleOnClick)}
-          >
+          <Button form="newOrder" type="submit">
             Finalizar pagamento
           </Button>
 

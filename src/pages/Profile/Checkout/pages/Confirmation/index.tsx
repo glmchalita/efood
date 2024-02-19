@@ -6,7 +6,11 @@ import { Button } from '../../../../../components/Button'
 import { setCheckoutPage, setOpen } from '../../../../../store/sliceCart'
 import { Close, Content, ControlsContainer, Overlay } from './styles'
 
-export function Confirmation() {
+interface ConfirmationProps {
+  orderId?: string
+}
+
+export function Confirmation({ orderId }: ConfirmationProps) {
   const dispatch = useDispatch()
 
   function handleOpenModal() {
@@ -21,7 +25,7 @@ export function Confirmation() {
         <Close>
           <X size={24} />
         </Close>
-        <h2>Pedido realizado - ORDERID</h2>
+        <h2>Pedido realizado - {orderId}</h2>
 
         <div>
           <p>

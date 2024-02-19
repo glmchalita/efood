@@ -4,13 +4,13 @@ import {
   InputHTMLAttributes,
   LegacyRef,
 } from 'react'
-import { FieldError, FieldErrorsImpl } from 'react-hook-form'
+import { FieldError } from 'react-hook-form'
 
 import { ErrorMessage, TextInputContainer } from './styles'
 
 type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
   containerProps?: HTMLAttributes<HTMLDivElement>
-  error?: FieldError | FieldErrorsImpl
+  error?: FieldError
   label: string
 }
 

@@ -23,7 +23,7 @@ export interface RestaurantInput {
 }
 
 export interface Cart {
-  id: string
+  id: number
   image: string
   title: string
   price: number

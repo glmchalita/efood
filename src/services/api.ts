@@ -3,12 +3,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RestaurantInput } from '../store/sliceCart'
 
 interface CheckoutPayload {
-  products: [
-    {
-      id: number
-      price: number
-    },
-  ]
+  products: {
+    id: number
+    price: number
+  }[]
   delivery: {
     receiver: string
     address: {
@@ -32,6 +30,10 @@ interface CheckoutPayload {
   }
 }
 
+interface checkoutResponse {
+  orderId: string
+}
+
 const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://fake-api-tau.vercel.app/api/efood',
@@ -40,7 +42,7 @@ const api = createApi({
     getRestaurants: builder.query<RestaurantInput[], void>({
       query: () => 'restaurantes',
     }),
-    checkout: builder.mutation<any, CheckoutPayload>({
+    checkout: builder.mutation<checkoutResponse, CheckoutPayload>({
       query: (body) => ({
         url: 'checkout',
         method: 'POST',

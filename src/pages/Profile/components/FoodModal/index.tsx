@@ -15,7 +15,7 @@ export function FoodModal({ item }: FoodModalProps) {
 
   function handleAddToCart() {
     const newItem = {
-      id: crypto.randomUUID(),
+      id: new Date().getTime(),
       image: item.foto,
       title: item.nome,
       price: item.preco,
