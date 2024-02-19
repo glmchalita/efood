@@ -23,13 +23,25 @@ export interface RestaurantInput {
 }
 
 export interface Cart {
-  id: string
+  id: number
   image: string
   title: string
   price: number
 }
 
-const initialState: Cart[] = []
+interface CartReducer {
+  cart: Cart[]
+  totalPrice: number
+  isOpen: boolean
+  checkoutPage: 'delivery' | 'payment' | 'confirmation' | ''
+}
+
+const initialState: CartReducer = {
+  cart: [],
+  totalPrice: 0,
+  isOpen: false,
+  checkoutPage: '',
+}
 
 const sliceCart = createSlice({
   name: 'cart',
@@ -43,18 +55,38 @@ const sliceCart = createSlice({
         price: payload.price,
       }
 
-      return [...state, newItem]
+      const totalPrice = state.totalPrice + payload.price
+
+      return {
+        ...state,
+        cart: [...state.cart, newItem],
+        totalPrice,
+      }
     },
     removeItem(state, { payload }: PayloadAction<Cart>) {
-      const cartWithoutDeletedOne = state.filter(
+      const cartWithoutDeletedOne = state.cart.filter(
         (item) => item.id !== payload.id,
       )
 
-      return [...cartWithoutDeletedOne]
+      const totalPrice = cartWithoutDeletedOne.reduce((total, currentItem) => {
+        return (total += currentItem.price)
+      }, 0)
+
+      return { ...state, cart: cartWithoutDeletedOne, totalPrice }
+    },
+    setOpen(state, { payload }: PayloadAction<boolean>) {
+      return { ...state, isOpen: payload }
+    },
+    setCheckoutPage(
+      state,
+      { payload }: PayloadAction<'delivery' | 'payment' | 'confirmation' | ''>,
+    ) {
+      return { ...state, checkoutPage: payload }
     },
   },
 })
 
 export default sliceCart.reducer
-export const { addItem, removeItem } = sliceCart.actions
+export const { addItem, removeItem, setOpen, setCheckoutPage } =
+  sliceCart.actions
 export type stateType = ReturnType<typeof store.getState>

@@ -3,20 +3,25 @@ import { X } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 
 import { Button } from '../../../../components/Button'
-import { addItem, ItemInput } from '../../../../store/sliceCart'
+import { addItem, ItemInput, setOpen } from '../../../../store/sliceCart'
 import { Close, Content, Overlay, Title } from './styles'
 
-export function FoodModal({ item }: { item: ItemInput }) {
+interface FoodModalProps {
+  item: ItemInput
+}
+
+export function FoodModal({ item }: FoodModalProps) {
   const dispatch = useDispatch()
 
   function handleAddToCart() {
     const newItem = {
-      id: crypto.randomUUID(),
+      id: new Date().getTime(),
       image: item.foto,
       title: item.nome,
       price: item.preco,
     }
     dispatch(addItem(newItem))
+    dispatch(setOpen(true))
   }
 
   return (

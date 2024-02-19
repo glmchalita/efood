@@ -1,9 +1,10 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import { useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 
 import logo from '../../assets/logo.svg'
 import { Button } from '../../components/Button'
-import { RestaurantInput } from '../../store/sliceCart'
+import { RestaurantInput, setOpen } from '../../store/sliceCart'
 import { useCart } from '../../store/useCart'
 import { Checkout } from './Checkout'
 import { FoodCard } from './components/FoodCard'
@@ -20,7 +21,13 @@ import {
 export function Profile() {
   const { state } = useLocation()
   const restaurant = state.restaurant as RestaurantInput
-  const cart = useCart()
+
+  const dispatch = useDispatch()
+  const { cart, isOpen } = useCart()
+
+  function handleOpenModal(isOpen: boolean) {
+    dispatch(setOpen(isOpen))
+  }
 
   return (
     <>
@@ -30,7 +37,7 @@ export function Profile() {
 
           <img src={logo} alt="" />
 
-          <Dialog.Root>
+          <Dialog.Root open={isOpen} onOpenChange={handleOpenModal}>
             <Dialog.Trigger asChild>
               <Button>{cart.length} produto(s) no carrinho</Button>
             </Dialog.Trigger>

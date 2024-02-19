@@ -3,14 +3,13 @@ import styled from 'styled-components'
 
 export const RestaurantCardContainer = styled.div`
   width: 100%;
-
   color: ${({ theme }) => theme.color.red};
   position: relative;
 
   > img {
     display: block;
     width: 100%;
-    height: 220px;
+    height: 217px;
     object-fit: cover;
   }
 
@@ -41,8 +40,8 @@ export const CardContent = styled.div`
   padding: 8px;
   display: flex;
   flex-direction: column;
+  height: 181px;
   gap: 16px;
-
   background-color: ${({ theme }) => theme.color.white};
   border: 2px solid ${({ theme }) => theme.color.red};
   border-top: 0;

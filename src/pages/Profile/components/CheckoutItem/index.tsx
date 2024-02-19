@@ -26,7 +26,7 @@ export function CheckoutItem({ item }: { item: Cart }) {
       </div>
 
       <button onClick={handleDeleteItem}>
-        <Trash2 size={20} />
+        <Trash2 size={16} />
       </button>
     </ItemContent>
   )
